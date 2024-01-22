@@ -1,6 +1,8 @@
 # OpenBMS
 OpenBMS is a open source battery management system(BMS), aim to provide BMS for grid storage, electric vehicles, and other battery energy storage systems.
 
+![image](./resources/bms-monitor.png)
+
 ## Domain Knowleges
 - [x] [Characteristics](./docs/characteristic-of-lithium-ion-battery.md) of Lithium-ion batteries
 - [x] [Thermal runaway issue](./docs/thermal-runaway-issue.md) of Li-ion batteries
