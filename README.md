@@ -6,7 +6,8 @@ OpenBMS is a open source battery management system(BMS), aim to provide BMS for 
 ## Domain Knowleges
 - [x] [Characteristics](./docs/characteristic-of-lithium-ion-battery.md) of Lithium-ion batteries
 - [x] [Thermal runaway issue](./docs/thermal-runaway-issue.md) of Li-ion batteries
-- [x] [Why](./docs/decreased-perf-under-low-temperature.md) low temperature decrease batteries' performance?
+- [x] [Why low temperature decrease batteries' performance?](./docs/decreased-perf-under-low-temperature.md)
+- [x] [How to maximize Lithium-ion battery life?](./docs/how-to-maximize-lithium-ion-battery-life.md)
 
 ## Data Store
 - [ ] Implement robust data management for monitoring and collecting data from individual batteries.
