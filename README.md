@@ -1,5 +1,5 @@
 # OpenBMS
-OpenBMS is a open source battery management system(BMS), aim to provide BMS for battery energy storage systems, electric vehicles.
+OpenBMS is a open source battery management system(BMS), aim to provide BMS for battery energy storage systems. OpenBMS monitor SOC and SOH of each battery cell in real-time, automatically balance the charge and discharge operations to achieve longer lifespan and higher efficiency for batteries. OpenBMS also collect batterier data and upload them to cloud, periodically analyze and learn these latest data and historical data to predict the remain lifetime of these batteries and provide maintenance suggestions in advance. 
 
 ![image](./resources/bms-monitor.png)
 
@@ -14,8 +14,8 @@ OpenBMS is a open source battery management system(BMS), aim to provide BMS for 
 - [ ] Store time series data locally.
 - [ ] Upload data to cloud storage like S3.
 
-## Intelligent and Predictive Operations
-- [ ] Process collected data with ML and statistic algorithms, to predict the remain lifetime of each battery pack, and provide maintenance suggestions in advance.
+## Intelligent and Predictive Maintenance
+- [ ] Process latest collected data and historical data with ML and BigData algorithms, to predict SOH(State-Of-Health) of each battery pack, and provide maintenance suggestions in advance.
 - [ ] Analyze operational data to identify opportunities for improving overall energy efficiency, suggesting adjustments in the system configuration or operation.
 
 ## Battery Managment
@@ -32,7 +32,7 @@ OpenBMS is a open source battery management system(BMS), aim to provide BMS for 
 - [ ] Optimize energy usage based on grid demand and supply.
 - [ ] Implement algorithms for determining when to charge and discharge batteries to maximize efficiency.
 
-### Temperature Management:
+### Thermal Management:
 - [ ] Monitor and control battery temperatures to optimize performance and prevent overheating.
 - [ ] Implement thermal management strategies to ensure safe operation.
 
