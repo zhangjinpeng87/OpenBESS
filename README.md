@@ -1,4 +1,10 @@
 # OpenBMS
+## Why did I create this project?
+Saving the earth by adopting clean renewable energy is my personal vision and it is also a big ongoing trend. We can adopte more Solar energy and Wind energy to replace fossil fuel energy like coal, nature gas, oil, etc. Since the sun is not shine in the night, the wind can not blow, and we need enough energy storage systems to store produced energy, and release energy from these storage when energy is demanded. Pumped hydro station is a good energy storage system when there is geographic condition and if we don't consider its long bulding duration. Battery energy storage system is the most feasible choice in terms of scalability, installation duration, and flexibility. I believe there will be at least one large energy storage system for each city in the US in the future.
+
+But, how to manage these large scale battery energy storage systems? How to schedule the charge and discharge algorithm to make these battery energy storage system have a longer lifespan and higher efficient? How to monitor and analyze the state of health for these large scale batteries and provide maintenance suggestions in advance by BigData and ML technology? These are the goals of this project.
+
+## Project description
 OpenBMS is a open source battery management system(BMS), aim to provide BMS for battery energy storage systems. OpenBMS monitor SOC and SOH of each battery cell in real-time, automatically balance the charge and discharge operations to achieve longer lifespan and higher efficiency for batteries. OpenBMS also collect batterier data and upload them to cloud, periodically analyze and learn these latest data and historical data to predict the remain lifetime of these batteries and provide maintenance suggestions in advance. 
 
 ![image](./resources/bms-monitor.png)
