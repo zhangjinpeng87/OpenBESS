@@ -7,6 +7,7 @@ But:
 - How to schedule the charge and discharge algorithm to make these battery energy storage system have a longer lifespan and higher efficient?
 - How to monitor and analyze the state of health for these large scale batteries and provide intelligent maintenance suggestions in advance by BigData and ML technology?
 - A massive of Electric Vehicles batteries will be retired in next few years, these batteries has some degradation and not suitable to use in new vehicles, but they still capable and can be used for battery energy storage system for many years. How to assess the SOH of these used batteries accurately through BigData and ML technology, how to classify and manage these heterogeneous batteries to achieve best efficiency?
+- What if customers don't want to buy BESS built from used batteries since they have concern about the quality and lifespan of these batteries? Pay-as-you-go energy as a service probably is a good choice.
 
 These are the goals of this project.
 
