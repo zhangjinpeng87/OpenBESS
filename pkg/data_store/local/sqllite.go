@@ -169,5 +169,5 @@ func (s *SqliteStore) generateCsvFile(states []BatteryState) (string, error) {
 // generateParquetFile generates parquet file of the battery state.
 func (s *SqliteStore) generateParquetFile(states []BatteryState) (string, int, error) {
 	// TODO
-	return "", 0, nil
+	return "", 0, fmt.Errorf("not implemented")
 }

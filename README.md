@@ -1,23 +1,21 @@
 # OpenBMS
 ## Why did I create this project?
-Saving the earth by adopting clean renewable energy is my personal vision and it is also a big ongoing trend. We can adopte more Solar energy and Wind energy to replace fossil fuel energy like coal, nature gas, oil, etc. Since the sun is not shine in the night, the wind can not blow, and we need enough energy storage systems to store produced energy, and release energy from these storage when energy is demanded. Pumped hydro station is a good energy storage system when there is geographic condition and if we don't consider its long bulding duration. Battery energy storage system is the most feasible choice in terms of scalability, installation duration, and flexibility. I believe there will be at least one large energy storage system for each city in the US in the future.
+Saving the earth by adopting clean renewable energy is a big ongoing trend. We can adopte more Solar energy and Wind energy to replace fossil fuel energy like coal, nature gas, oil, etc. Since the sun is not shine in the night, the wind can not blow sometimes, we need enough energy storage systems to store produced energy, and release energy from these storage when energy is demanded. Pumped hydro station is a good energy storage system when there is geographic condition and if we don't consider its long bulding duration. Battery energy storage system is the most feasible choice in terms of scalability, installation duration, and flexibility.
 
-But, how to manage these large scale battery energy storage systems? How to schedule the charge and discharge algorithm to make these battery energy storage system have a longer lifespan and higher efficient? How to monitor and analyze the state of health for these large scale batteries and provide maintenance suggestions in advance by BigData and ML technology? These are the goals of this project.
+But:
+- How to manage these large scale battery energy storage systems?
+- How to schedule the charge and discharge algorithm to make these battery energy storage system have a longer lifespan and higher efficient?
+- How to monitor and analyze the state of health for these large scale batteries and provide intelligent maintenance suggestions in advance by BigData and ML technology? 
+These are the goals of this project.
 
 ## Project description
 OpenBMS is a open source battery management system(BMS), aim to provide BMS for battery energy storage systems. OpenBMS monitor SOC and SOH of each battery cell in real-time, automatically balance the charge and discharge operations to achieve longer lifespan and higher efficiency for batteries. OpenBMS also collect batterier data and upload them to cloud, periodically analyze and learn these latest data and historical data to predict the remain lifetime of these batteries and provide maintenance suggestions in advance. 
 
 ![image](./resources/bms-monitor.png)
 
-## Domain Knowleges
-- [x] [Characteristics](./docs/characteristic-of-lithium-ion-battery.md) of Lithium-ion batteries
-- [x] [Thermal runaway issue](./docs/thermal-runaway-issue.md) of Li-ion batteries
-- [x] [Why low temperature decrease batteries' performance?](./docs/decreased-perf-under-low-temperature.md)
-- [x] [How to maximize Lithium-ion battery life?](./docs/how-to-maximize-lithium-ion-battery-life.md)
-
-## Data Store
+## Data Management
 - [ ] Implement robust data management for monitoring and collecting data from individual batteries.
-- [ ] Store time series data locally.
+- [x] Store latest battery state data locally.
 - [ ] Upload data to cloud storage like S3.
 
 ## Intelligent and Predictive Maintenance
@@ -27,7 +25,7 @@ OpenBMS is a open source battery management system(BMS), aim to provide BMS for 
 ## Battery Managment
 
 ### State of Charge Calculation
-- [ ] Develop algorithms for accurate SoC calculations based on battery voltage, current, and temperature measurements.
+- [x] Develop algorithms for accurate charging/discharging SoC calculations based on battery voltage, current.
 - [ ] Consider incorporating advanced techniques like Kalman filters for better estimation.
 
 ### Balancing and Equalization:
@@ -43,5 +41,11 @@ OpenBMS is a open source battery management system(BMS), aim to provide BMS for 
 - [ ] Implement thermal management strategies to ensure safe operation.
 
 ### State of Health Monitoring
-- [ ] Monitor state of health for each pack and each cell
+- [ ] Monitor state of health for each pack
 - [ ] Show SOH on dashboard 
+
+## Domain Knowleges
+- [x] [Characteristics](./docs/characteristic-of-lithium-ion-battery.md) of Lithium-ion batteries
+- [x] [Thermal runaway issue](./docs/thermal-runaway-issue.md) of Li-ion batteries
+- [x] [Why low temperature decrease batteries' performance?](./docs/decreased-perf-under-low-temperature.md)
+- [x] [How to maximize Lithium-ion battery life?](./docs/how-to-maximize-lithium-ion-battery-life.md)
