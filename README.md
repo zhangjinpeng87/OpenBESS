@@ -17,6 +17,7 @@ OpenBMS is a open source battery management system(BMS), aim to provide BMS for 
 - [ ] Implement robust data management for monitoring and collecting data from individual batteries.
 - [x] Store latest battery state data locally.
 - [ ] Upload data to cloud storage like S3.
+- [ ] Simulator to simulate hundreds of thousand battery sensors to report data.
 
 ## Intelligent and Predictive Maintenance
 - [ ] Process latest collected data and historical data with ML and BigData algorithms, to predict SOH(State-Of-Health) of each battery pack, and provide maintenance suggestions in advance.
