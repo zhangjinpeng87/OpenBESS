@@ -15,10 +15,8 @@ import (
 )
 
 type SqliteStore struct {
-	//
 	cfg *config.LocalStoreConfig
 
-	//
 	db *sqlx.DB
 }
 
@@ -60,7 +58,9 @@ func (s *SqliteStore) initSchema() error {
 			cell INTEGER NOT NULL,
 			voltage REAL NOT NULL,
 			current REAL NOT NULL,
+			soc REAL NOT NULL,
 			temperature REAL NOT NULL,
+			state INTEGER NOT NULL,
 			timestamp INTEGER NOT NULL,
 			PRIMARY KEY (station, container, pack, cell)
 		);
@@ -72,14 +72,16 @@ func (s *SqliteStore) initSchema() error {
 // TODO: use perpared statement to improve performance.
 func (s *SqliteStore) Upsert(state *datamodel.BatteryState) error {
 	_, err := s.db.Exec(`
-		INSERT INTO battery_state(station, container, pack, cell, voltage, current, temperature, timestamp)
+		INSERT INTO battery_state(station, container, pack, cell, voltage, current, soc, temperature, state, timestamp)
 		VALUES (?, ?, ?, ?, ?, ?, ?, ?)
 		ON CONFLICT(station, container, pack, cell) DO UPDATE SET
 			voltage = excluded.voltage,
 			current = excluded.current,
+			soc = excluded.soc,
 			temperature = excluded.temperature,
-			timestamp = excluded.timestamp
-	`, state.Station, state.Container, state.Pack, state.Cell, state.Voltage, state.Current, state.Temperature, state.Timestamp)
+			state = excluded.state
+			timestamp = excluded.timestamp,
+	`, state.Station, state.Container, state.Pack, state.Cell, state.Voltage, state.Current, state.soc, state.Temperature, state.State, state.Timestamp)
 	return err
 }
 
@@ -135,7 +137,8 @@ func (s *SqliteStore) generateCsvFile(states []BatteryState) (string, error) {
 	}
 
 	// open a local file for writing, the file name is the timestamp of the snapshot
-	file, err := os.Create(fmt.Sprintf("%d-%d.csv", states[0].station, time.Now().Unix()))
+	t := time.Now()
+	file, err := os.Create(fmt.Sprintf("%d/%s/%d.csv", states[0].station, fmt.Sprintf("%d%02d%02d", t.Year(), t.Month(), t.Day()), t.Unix())
 	if err != nil {
 		return "", fmt.Errorf("failed to create file: %w", err)
 	}
@@ -149,16 +152,16 @@ func (s *SqliteStore) generateCsvFile(states []BatteryState) (string, error) {
 	crc32 := crc32.NewIEEE()
 
 	// write csv header, delimiter is comma
-	// station, container, pack, cell, voltage, current, temperature, timestamp
-	header := "station,container,pack,cell,voltage,current,temperature,timestamp\n"
+	// station, container, pack, cell, voltage, current, soc, temperature, state, timestamp
+	header := "station,container,pack,cell,voltage,current,soc,temperature,state,timestamp\n"
 	w.WriteString(header)
 	crc32.Write([]byte(header))
 
 	// write csv body
 	for _, state := range states {
-		row := fmt.Sprintf("%d,%d,%d,%d,%f,%f,%f,%d\n",
+		row := fmt.Sprintf("%d,%d,%d,%d,%f,%f,%f,%f,%d\n",
 			state.Station, state.Container, state.Pack, state.Cell,
-			state.Voltage, state.Current, state.Temperature, state.Timestamp)
+			state.Voltage, state.Current, state.SOC, state.Temperature, state.State, state.Timestamp)
 		crc32.Write([]byte(row))
 		w.WriteString(row)
 	}

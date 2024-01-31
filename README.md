@@ -30,7 +30,7 @@ OpenBMS is a open source battery management system(BMS), aim to provide BMS for 
 
 ### State of Charge Calculation
 - [x] Develop algorithms for accurate charging/discharging SoC calculations based on battery voltage, current.
-- [ ] Consider incorporating advanced techniques like Kalman filters for better estimation.
+- [x] Consider incorporating advanced techniques like Kalman filters for better estimation.
 
 ### Balancing and Equalization:
 - [ ] Implement balancing algorithms to ensure that individual cells within a battery pack are charged and discharged uniformly.

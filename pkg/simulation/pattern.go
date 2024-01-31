@@ -4,14 +4,6 @@ import (
 
 )
 
-type State enum {
-	Charging,
-	Discharging,
-	FastCharging,
-	FastDischarging,
-	Idle,
-}
-
 type MockCfg struct {
 	// Behavior is the behavior of the sensor.
 	Behavior Behavior `json:"behavior"`
