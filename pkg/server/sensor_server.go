@@ -1,4 +1,4 @@
-package servers
+package server
 
 import (
 	"context"
@@ -10,11 +10,9 @@ import (
 	"syscall"
 
 	"github.com/pingcap/log"
-	"go.uber.org/zap"
 	"github.com/zhangjinpeng87/openbms/pkg/config"
+	"go.uber.org/zap"
 )
-
-
 
 // SensorServer is a TCP server that listens for sensor data.
 type SensorServer struct {
@@ -38,7 +36,6 @@ func (s *SensorServer) Start() error {
 		return fmt.Errorf("failed to create listener: %w", err)
 	}
 	s.l = l
-
 
 }
 
@@ -75,6 +72,3 @@ func (s *SensorServer) handleSensor(w http.ResponseWriter, r *http.Request) {
 func (s *SensorServer) updateState(state BatteryState) {
 	log.Debug("received sensor: %+v", sensor)
 }
-
-
-	
