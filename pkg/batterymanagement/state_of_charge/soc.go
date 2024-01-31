@@ -1,9 +1,3 @@
-package soc
-
-import (
-	"github.com/zhangjinpeng87/openbms/pkg/utils"
-)
-
 // State Of Charge (SOC) is the available capacity of a battery expressed as a percentage of the rated capacity.
 // Use Kalman Filter to filter the noise of voltage and current.
 //  1.1 Discharge Voltage Curve
@@ -46,6 +40,12 @@ import (
 //    0    10    20    30    40    50    60    70 (Charge Time in Minutes)
 //    |------------------|----------------------|
 //   Constant Current Charge   Saturation Charge
+
+package soc
+
+import (
+	"github.com/zhangjinpeng87/openbms/pkg/utils"
+)
 
 const (
 	// Discharge parameters of Li-ion battery

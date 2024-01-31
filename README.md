@@ -12,7 +12,7 @@ But:
 These are the goals of this project.
 
 ## Project description
-OpenBMS is a open source battery management system(BMS), aim to provide BMS for battery energy storage systems. OpenBMS monitor SOC and SOH of each battery cell in real-time, automatically balance the charge and discharge operations to achieve longer lifespan and higher efficiency for batteries. OpenBMS also collect batterier data and upload them to cloud, periodically analyze and learn these latest data and historical data to predict the remain lifetime of these batteries and provide maintenance suggestions in advance. 
+OpenBMS is a open source battery management system(BMS), aim to provide BMS for battery energy storage systems. OpenBMS monitor SOC and SOH of each battery cell in real-time, automatically balance the charge and discharge operations to achieve longer lifespan and higher efficiency for batteries. OpenBMS also collect batteries data and upload them to cloud, periodically analyze and learn these latest data and historical data to predict the remain lifetime of these batteries and provide maintenance suggestions in advance, etc. Please refer to [What ML Can Help?](./ml/README.md) and [What BigData Can Help?](./spark/README.md) for more information.
 
 ![image](./resources/bms-monitor.png)
 
