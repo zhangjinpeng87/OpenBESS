@@ -73,17 +73,19 @@ const (
 	VoltageDeviation = 0.1
 )
 
+type SocCalculator interface {
+	SOC(voltage, current float64) float64
+}
+
 type DischargeCalculater struct {
 	DisMaxVoltage     float64
 	DisMidHighVoltage float64
 	DisMidLowVoltage  float64
 	DisMinVoltage     float64
-
-	KalmanFilter *utils.KalmanFilter
 }
 
-// NewSocCalculater creates a new soc calculater.
-func DischargeCalculater(MaxVoltage, MidHighVoltage, MidLowVoltage, MinVoltage float64) *DischargeCalculater {
+// NewDischargeCalculater creates a new soc calculater.
+func NewDischargeCalculater(MaxVoltage, MidHighVoltage, MidLowVoltage, MinVoltage float64) *DischargeCalculater {
 	return &DischargeSocCalculater{
 		DisMaxVoltage:     MaxVoltage,
 		DisMidHighVoltage: MidHighVoltage,
@@ -92,16 +94,18 @@ func DischargeCalculater(MaxVoltage, MidHighVoltage, MidLowVoltage, MinVoltage f
 	}
 }
 
-func (s *DischargeCalculater) InitKalmanFilter(initialValue, initialEstimateError, processNoise, measurementNoise float64) {
-	s.KalmanFilter = utils.NewKalmanFilter(initialValue, initialEstimateError, processNoise, measurementNoise)
+// NewDefaultDischargeCalculater creates a new soc calculater with default parameters.
+func NewDefaultDischargeCalculater() *DischargeCalculater {
+	return &DischargeSocCalculater{
+		DisMaxVoltage:     DisLiMaxVoltage,
+		DisMidHighVoltage: DisLiMidHighVoltage,
+		DisMidLowVoltage:  DisLiMidLowVoltage,
+		DisMinVoltage:     DisLiMinVoltage,
+	}
 }
 
 // SOC calculates the soc of a battery cell when discharging.
-func (s *DischargeCalculater) SOC(voltage float64) float64 {
-	if s.KalmanFilter != nil {
-		voltage = s.KalmanFilter.Update(voltage)
-	}
-
+func (s *DischargeCalculater) SOC(voltage, _current float64) float64 {
 	if voltage >= s.DisMaxVoltage {
 		return 100
 	}
@@ -123,11 +127,6 @@ type ChargeCalculater struct {
 	ChMidLowVoltage      float64
 	ChMinVoltage         float64
 	ChMaxChargingCurrent float64
-
-	// Voltage Kalman Filter
-	VKalmanFilter *utils.KalmanFilter
-	// Current Kalman Filter
-	CKalmanFilter *utils.KalmanFilter
 }
 
 // NewChargeCalculater creates a new charge calculater.
@@ -141,20 +140,19 @@ func NewChargeCalculater(MaxVoltage, MidHighVoltage, MidLowVoltage, MinVoltage, 
 	}
 }
 
-func (s *ChargeCalculater) InitKalmanFilter(initialValue, initialEstimateError, processNoise, measurementNoise float64) {
-	s.VKalmanFilter = utils.NewKalmanFilter(initialValue, initialEstimateError, processNoise, measurementNoise)
-	s.CKalmanFilter = utils.NewKalmanFilter(initialValue, initialEstimateError, processNoise, measurementNoise)
+// NewDefaultChargeCalculater creates a new charge calculater with default parameters.
+func NewDefaultChargeCalculater() *ChargeCalculater {
+	return &ChargeSocCalculater{
+		ChMaxVoltage:         ChLiMaxVoltage,
+		ChMidHighVoltage:     ChLiMidHighVoltage,
+		ChMidLowVoltage:      ChLiMidLowVoltage,
+		ChMinVoltage:         ChLiMinVoltage,
+		ChMaxChargingCurrent: LiMaxChargingCurrent,
+	}
 }
 
 // SOC calculates the soc of a battery cell when charging.
 func (s *ChargeCalculater) SOC(voltage, current float64) float64 {
-	if s.VKalmanFilter != nil {
-		voltage = s.VKalmanFilter.Update(voltage)
-	}
-	if s.CKalmanFilter != nil {
-		current = s.CKalmanFilter.Update(current)
-	}
-
 	if current >= s.MaxChargingCurrent {
 		// Constant Current Charge Stage
 		if voltage < s.ChMinVoltage {
