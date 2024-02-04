@@ -22,7 +22,7 @@ OpenBMS is a open source battery management system(BMS), aim to provide BMS for 
 
 ## Intelligent and Predictive Maintenance
 
-![image](.ml/resources/ca_elec_consumption_prediction.png)
+![image](./ml/resources/ca_elec_consumption_prediction.png)
 
 Above diagram is California electricity consumption predicted by Long Short-Term Memory Recurrent Nueral Network algorithm VS real consumption. See [ML README](./ml/README.md) for more details.
 
