@@ -14,7 +14,7 @@ Use ML algorithms to:
 
 The above diagram shows the predicted electricity consumption and real consumption of california for the first half month of 2024. You can use following commands to run the electricity consumption predict program. Please make sure you have installed `pytorch`, `sklearn`, `pandas`, `numpy`, and `matplotlib`.
 
-'''
+```
 cd ml
 python3 lstm/elec_comsumption.py --train_dataset=./resources/ca_electric_demand_train_2023.csv --test_dataset=./resources/ca_electric_demand_test_202401.csv --num_epochs=20 --learning_rate=0.001 --num_layers=1 --hidden_size=100 --sequence_length=48
-'''
+```
