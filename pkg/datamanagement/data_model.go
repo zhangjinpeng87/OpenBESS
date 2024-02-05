@@ -1,4 +1,4 @@
-package datamodel
+package data_model
 
 import (
 	"sync"
@@ -13,8 +13,6 @@ const (
 	Idle State = iota + 1
 	Charging
 	Discharging
-	FastCharging
-	FastDischarging
 )
 
 func (s State) String() string {
@@ -25,10 +23,6 @@ func (s State) String() string {
 		return "Charging"
 	case Discharging:
 		return "Discharging"
-	case FastCharging:
-		return "FastCharging"
-	case FastDischarging:
-		return "FastDischarging"
 	default:
 		return "Unknown"
 	}

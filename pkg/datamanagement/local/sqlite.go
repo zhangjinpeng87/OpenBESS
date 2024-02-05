@@ -11,7 +11,7 @@ import (
 	"github.com/jmoiron/sqlx"
 	_ "github.com/mattn/go-sqlite3"
 	"github.com/zhangjinpeng87/openbms/pkg/config"
-	"github.com/zhangjinpeng87/openbms/pkg/datamodel"
+	"github.com/zhangjinpeng87/openbms/pkg/datamanagement/data_model"
 )
 
 type SqliteStore struct {
