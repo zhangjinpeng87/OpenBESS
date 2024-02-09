@@ -13,14 +13,18 @@ Use ML algorithms to:
 Following commands are used to train and predict the electricity consumption for future. You can choose different parameters to tune the training model. We use LSTM(Long Short-Term Memory) RNN(Recurrent Nueral Network) algorithm to predict California's future electricity consumption.
 ```
 cd ml
-python3 ./lstm/elec_comsumption.py --train_dataset=./resources/ca_electric_demand_train_2023.csv \
+python3 ./elec_comsumption.py --train_dataset=./resources/ca_electric_demand_train_2023.csv \
     --test_dataset=./resources/ca_electric_demand_test_202401.csv --num_epochs=10 --learning_rate=0.001 \
     --num_layers=1 --hidden_size=100 --sequence_length=72 --target_length=24
 ```
 
+![image](./resources/48h_predict.png)
+
+Above diagram shows the predicted electricity consumption for next 48h according to latest 7 days data. Please make sure you have installed `pytorch`, `sklearn`, `pandas`, `numpy`, and `matplotlib`.
+
 ![image](./resources/12h_predict.png)
 
-Above diagram shows the predicted electricity consumption for next 12h according to last 7 days data. Please make sure you have installed `pytorch`, `sklearn`, `pandas`, `numpy`, and `matplotlib`.
+Above diagram shows the predicted electricity consumption for next 12h according to latest 7 days data.
 
 ![image](./resources/24h_predict.png)
 
